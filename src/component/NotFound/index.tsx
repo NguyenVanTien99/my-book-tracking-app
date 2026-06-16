@@ -1,7 +1,7 @@
 export const NotFound = (): JSX.Element => {
   return (
     <>
-      <div>
+      <div className="not-found">
         <svg
           className="svg-icon"
           viewBox="0 0 1567 1024"
@@ -13,7 +13,7 @@ export const NotFound = (): JSX.Element => {
             fill="#8A96A3"
           />
         </svg>
-        <div>Not Found Data</div>
+        <div>No books found here yet.</div>
       </div>
     </>
   );

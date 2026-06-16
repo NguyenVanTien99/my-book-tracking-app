@@ -10,17 +10,22 @@ export const Shelf = (props: ShelfProps): JSX.Element => {
   };
 
   return (
-    <div
+    <section
       className="bookshelf"
       onDragOver={handleDragOver}
       onDrop={(event) => onDrop(event, shelfName)}
+      aria-label={`${title} shelf`}
     >
-      <h2 className="bookshelf-title">{title}</h2>
+      <div className="bookshelf-header">
+        <h2 className="bookshelf-title">{title}</h2>
+        <span className="bookshelf-count">{books?.length || 0} books</span>
+      </div>
+      <p className="bookshelf-hint">Drop books here or use the action menu on each cover.</p>
       <div className="bookshelf-books">
         <ol className="books-grid">
           <BookList books={books} setBooks={setBooks} setSpinner={setSpinner} />
         </ol>
       </div>
-    </div>
+    </section>
   );
 };

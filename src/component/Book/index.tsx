@@ -26,16 +26,22 @@ export const Book = (props: BookProps): JSX.Element => {
       <div className="book-top">
         <Link to={`/book/${book.id}`} aria-label={`View details for ${title}`}>
           <div
-            className="book-cover"
+            className={`book-cover ${!imageUrl ? "book-cover-empty" : ""}`}
             style={{
               width: 128,
               height: 193,
               backgroundImage: imageUrl ? `url("${imageUrl}")` : "none",
             }}
-          ></div>
+          >
+            {!imageUrl && <span>{title}</span>}
+          </div>
         </Link>
         <div className="book-shelf-changer">
-          <select onChange={handleShelfChange} defaultValue={bookshelf}>
+          <select
+            aria-label={`Move ${title} to another shelf`}
+            onChange={handleShelfChange}
+            defaultValue={bookshelf}
+          >
             <option value="move" disabled>
               Move to...
             </option>
@@ -50,7 +56,7 @@ export const Book = (props: BookProps): JSX.Element => {
         {title}
       </Link>
       <div className="book-authors">
-        {authors && authors.map((author) => `${author},`)}
+        {authors?.join(", ") || "Unknown author"}
       </div>
     </div>
   );

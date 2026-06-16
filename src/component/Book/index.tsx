@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { BookProps } from "./type";
 import { useHandleUpdateBookData } from "../../hooks/useHandleUpdateBookData";
 
@@ -23,14 +24,16 @@ export const Book = (props: BookProps): JSX.Element => {
       onDragStart={(event) => handleOnDragStart(event)}
     >
       <div className="book-top">
-        <div
-          className="book-cover"
-          style={{
-            width: 128,
-            height: 193,
-            backgroundImage: `url("${imageUrl}")`,
-          }}
-        ></div>
+        <Link to={`/book/${book.id}`} aria-label={`View details for ${title}`}>
+          <div
+            className="book-cover"
+            style={{
+              width: 128,
+              height: 193,
+              backgroundImage: imageUrl ? `url("${imageUrl}")` : "none",
+            }}
+          ></div>
+        </Link>
         <div className="book-shelf-changer">
           <select onChange={handleShelfChange} defaultValue={bookshelf}>
             <option value="move" disabled>
@@ -43,7 +46,9 @@ export const Book = (props: BookProps): JSX.Element => {
           </select>
         </div>
       </div>
-      <div className="book-title">{title}</div>
+      <Link className="book-title" to={`/book/${book.id}`}>
+        {title}
+      </Link>
       <div className="book-authors">
         {authors && authors.map((author) => `${author},`)}
       </div>

@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Search } from "./component/Search";
+import { BookDetail } from "./component/BookDetail";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -16,6 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/book/:bookId" element={<BookDetail />} />
       </Routes>
     </Router>
   </React.StrictMode>

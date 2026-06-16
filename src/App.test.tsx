@@ -1,9 +1,20 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+jest.mock("./hooks/useGetAllBookData", () => ({
+  __esModule: true,
+  useGetAllBookData: () => [[], jest.fn()],
+}));
+
+const App = require("./App").default;
+
+test("renders the MyReads app title", () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>
+  );
+
+  expect(screen.getByText(/MyReads/i)).toBeInTheDocument();
 });

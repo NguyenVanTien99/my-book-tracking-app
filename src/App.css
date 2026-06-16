@@ -25,7 +25,8 @@ body,
 
 button,
 select,
-input {
+input,
+textarea {
   font: inherit;
 }
 
@@ -463,6 +464,59 @@ button {
 .book-detail-description {
   color: #3d4741;
   font-size: 1rem;
+}
+
+.book-note {
+  margin: 28px 0 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface-soft);
+  padding: 18px;
+}
+
+.book-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.book-note h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.book-note-header button {
+  border-radius: 999px;
+  background: #efe5d6;
+  color: var(--primary-strong);
+  padding: 8px 12px;
+  font-weight: 800;
+}
+
+.book-note textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--text);
+  padding: 14px;
+  line-height: 1.45;
+  outline: none;
+}
+
+.book-note textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(217, 154, 43, 0.18);
+}
+
+.book-note-status {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
 }
 
 @media (max-width: 700px) {
